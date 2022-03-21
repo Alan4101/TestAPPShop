@@ -1,0 +1,15 @@
+.myBtn{
+    padding: 5px 20px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border: 2px solid teal;
+    cursor: pointer;
+    outline: none;
+    
+}
+.myBtn:hover, .myBtn:active, .myBtn:focus{
+    background-color: teal;
+    color: #fff;
+    transition: all 200ms ease-in;
+}
