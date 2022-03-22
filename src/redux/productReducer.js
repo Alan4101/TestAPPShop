@@ -18,7 +18,7 @@ export const productReducer = (state = initialState, action ) => {
         case ADD_NEW_PRODUCT: 
             return {
                 ...state,
-                products: state.products.push(action.payload) 
+                products:[...state.products,action.payload]  
             } 
 
     default: return state
