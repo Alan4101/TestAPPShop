@@ -92,9 +92,10 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
                 onChange = { e => SetProduct({...product,weight: e.target.value})}
                 placeholder="Weigth"
             />
-        {
+        {/* {
             typeButton ? <MyButton onClick={ createNewProduct }>Add</MyButton> : <MyButton onClick={ saveProduct }>Save</MyButton>
-        }
+        } */}
+        <MyButton onClick={ createNewProduct }>Add</MyButton> 
         <MyButton onClick={closeModal}>Close</MyButton>
         
             </form>

@@ -24,9 +24,8 @@ const ProductListView = () => {
     }, [dispatch, idForEdit]);
 
     const addNewProduct = (product) =>{
-        // createProduct(product)
         dispatch(createProduct(product));
-        // createNewPost("http://localhost:3000/products", product);
+        // createProduct(product)
         setModal(false)
         setEditOrCreate(true)
     }
@@ -47,7 +46,7 @@ const ProductListView = () => {
             visible={modal}
             setVisible={setModal}
             >
-                <ProductForm create={ addNewProduct }></ProductForm>
+                <ProductForm  create={ addNewProduct }></ProductForm>
             {/* {
                 editOrCreate? 
                     <ProductForm 
@@ -61,7 +60,8 @@ const ProductListView = () => {
             </MyModal>
             {
                 products.map((item) =>(
-                    <ProductItems key={item.id} data={item} editProduct={editProduct}  />)
+                    <ProductItems key={item.id} data={item}   />)
+                    // <ProductItems key={item.id} data={item} editProduct={editProduct}  />)
                 )
             }
             <div className="btn-create-product">

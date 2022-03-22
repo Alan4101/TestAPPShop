@@ -35,16 +35,14 @@ export function createProduct(product){
 
     return async (dispatch)=>{
       
-       try {
+      
         const res = createNewPost(apiConfig.urlProducts, product)
         dispatch({
             type: ADD_NEW_PRODUCT,
             payload: res.data
         })
    
-       } catch (error) {
-           console.log(error)
-       }
+      
     
              
     
