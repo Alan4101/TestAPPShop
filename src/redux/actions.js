@@ -33,14 +33,14 @@ export function fetchProducts(){
 }
 export function createProduct(product){
 
-    return async (dispatch)=>{
+    return  (dispatch)=>{
       
-      
-        const res = createNewPost(apiConfig.urlProducts, product)
+        const res = createNewPost(apiConfig.urlProducts, product);
         dispatch({
             type: ADD_NEW_PRODUCT,
-            payload: res.data
+            payload: product
         })
+
    
       
     

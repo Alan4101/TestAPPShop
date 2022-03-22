@@ -19,9 +19,9 @@ const ProductListView = () => {
     useEffect(() => {
         dispatch(fetchProducts());
 
-        getById(idForEdit);
+        // getById(idForEdit);
     
-    }, [dispatch, idForEdit]);
+    }, [dispatch]);
 
     const addNewProduct = (product) =>{
         dispatch(createProduct(product));
@@ -40,9 +40,10 @@ const ProductListView = () => {
     const closeWindow = () =>{
         setModal(false);
     }
+    console.log('prod', products)
     return (
-        <div className="product-list">
-            <MyModal 
+        <>
+        <MyModal 
             visible={modal}
             setVisible={setModal}
             >
@@ -58,9 +59,13 @@ const ProductListView = () => {
 
             } */}
             </MyModal>
+            <div className="product-list">
+            
+            
             {
-                products.map((item) =>(
-                    <ProductItems key={item.id} data={item}   />)
+                products.map((item) =>
+                (
+                    <ProductItems key={item.id} data={item}   /> )
                     // <ProductItems key={item.id} data={item} editProduct={editProduct}  />)
                 )
             }
@@ -69,6 +74,8 @@ const ProductListView = () => {
             </div>
             
         </div>
+        </>
+        
     );
 };
 
