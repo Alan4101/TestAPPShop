@@ -25,7 +25,8 @@ const ProductListView = () => {
 
     const addNewProduct = (product) =>{
         // createProduct(product)
-        createNewPost("http://localhost:3000/products", product);
+        dispatch(createProduct(product));
+        // createNewPost("http://localhost:3000/products", product);
         setModal(false)
         setEditOrCreate(true)
     }
@@ -46,7 +47,8 @@ const ProductListView = () => {
             visible={modal}
             setVisible={setModal}
             >
-            {
+                <ProductForm create={ addNewProduct }></ProductForm>
+            {/* {
                 editOrCreate? 
                     <ProductForm 
                         typeButton={editOrCreate} 
@@ -55,7 +57,7 @@ const ProductListView = () => {
                     ></ProductForm> :
                     <ProductForm></ProductForm>
 
-            }
+            } */}
             </MyModal>
             {
                 products.map((item) =>(

@@ -32,16 +32,20 @@ export function fetchProducts(){
     }
 }
 export function createProduct(product){
+
     return async (dispatch)=>{
-      try{
-        
-        const res = await axios.post('http://localhost:3000/products', product);
+      
+       try {
+        const res = createNewPost(apiConfig.urlProducts, product)
         dispatch({
             type: ADD_NEW_PRODUCT,
-            payload: res
+            payload: res.data
         })
    
-      }catch(e ) { console.log(e)}
+       } catch (error) {
+           console.log(error)
+       }
+    
              
     
     } 
