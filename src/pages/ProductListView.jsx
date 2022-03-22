@@ -40,14 +40,13 @@ const ProductListView = () => {
     const closeWindow = () =>{
         setModal(false);
     }
-    console.log('prod', products)
     return (
         <>
         <MyModal 
             visible={modal}
             setVisible={setModal}
             >
-                <ProductForm  create={ addNewProduct }></ProductForm>
+                <ProductForm closeAll={closeWindow} create={ addNewProduct }></ProductForm>
             {/* {
                 editOrCreate? 
                     <ProductForm 
@@ -60,13 +59,10 @@ const ProductListView = () => {
             } */}
             </MyModal>
             <div className="product-list">
-            
-            
             {
                 products.map((item) =>
                 (
                     <ProductItems key={item.id} data={item}   /> )
-                    // <ProductItems key={item.id} data={item} editProduct={editProduct}  />)
                 )
             }
             <div className="btn-create-product">

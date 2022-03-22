@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import MyInput from './UI/input/MyInput';
 import MyButton from './UI/button/MyButton';
 
 const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
     
     const [product, SetProduct] = useState({
-        id: Date.now(),
+        id: '',
         name:'',
         count:'',
         imageUrl:'',
@@ -22,23 +23,25 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
         e.preventDefault();
 
         const newProduct = {
-            id: product.id,
-            name: product.name,
-            count: product.count,
-            imageUrl: product.imageUrl,
-        
-            weight:product.weight,
-            comments:product.comments,
+            id: Date.now(),
+            ...product,
             size:{
                 width: product.width,
                 heigth: product.heigth
             }
+            
         }
         create(newProduct);
-    }
-    const closeModal = () =>{
 
+        for(const o in product){
+            product[o] = ''
+        }
+    }
+    const closeModal = (e) =>{
+        e.preventDefault();
+        
         closeAll();
+        console.log('close')
     }
     return (
         <div className="form-add-new-product">
@@ -55,7 +58,7 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
             <MyInput
                 id="count"
                 value={product.count}
-                type="text"  
+                type="number"  
                 onChange = { e => SetProduct({...product, count: e.target.value})}
                 placeholder="Count"
             />
@@ -72,7 +75,7 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
             <MyInput
                 id="width"
                 value={product.width}
-                type="text"  
+                type="number"  
                 onChange = { e => SetProduct({...product, width: e.target.value})}
                 placeholder="Width"
             />
@@ -80,7 +83,7 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
             <MyInput
                 id="heigth"
                 value={product.heigth}
-                type="text"  
+                type="number"  
                 onChange = { e => SetProduct({...product, heigth: e.target.value})}
                 placeholder="Heigth"
             />
@@ -88,7 +91,7 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
             <MyInput
                 id="weigth"
                 value={product.weight}
-                type="text"  
+                type="number"  
                 onChange = { e => SetProduct({...product,weight: e.target.value})}
                 placeholder="Weigth"
             />
@@ -103,4 +106,14 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
     );
 };
 
+ProductForm.propTypes = {
+    id: PropTypes.string,
+    name:PropTypes.string,
+    count: PropTypes.number,
+    imageUrl:PropTypes.string,
+    width: PropTypes.number,
+    heigth: PropTypes.number,
+    weight:PropTypes.number,
+    comments: PropTypes.array
+}
 export default ProductForm;
