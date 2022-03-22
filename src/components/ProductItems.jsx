@@ -2,11 +2,12 @@ import React from 'react';
 import MyButton from './UI/button/MyButton';
 
 const ProductItems = (props) => {
-    const {id, imageUrl, name, count, size, weight, comments} = props.data
+    const {id, imageUrl, name, count, size, weight, comments,} = props.data
     
+   
     
     return (
-        <div className="product-item" onClick={()=>console.log(id)}>
+        <div className="product-item" >
             <div className="wrapper-product">
                 <div className="picture-product">
                     <img src={imageUrl} alt={name} />
@@ -20,7 +21,7 @@ const ProductItems = (props) => {
                 </div>
             </div>
             <div className="control-product">
-                <MyButton onClick={()=>props.editProduct(props.data)}>Edit</MyButton>
+                <MyButton onClick={()=>props.editP(id)}>Edit</MyButton>
             </div>
             {/* <div className="comments-wrapper">
                 <div className="comment-block"></div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MyInput from './UI/input/MyInput';
 import MyButton from './UI/button/MyButton';
 
-const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
+const ProductForm = ({create, typeButton, edit, closeAll}) => {
     
     const [product, SetProduct] = useState({
         id: '',
@@ -39,9 +39,12 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
     }
     const closeModal = (e) =>{
         e.preventDefault();
-        
+
         closeAll();
-        console.log('close')
+    }
+    const saveProduct = (e)=>{
+        edit();
+        console.log(product)
     }
     return (
         <div className="form-add-new-product">
@@ -95,10 +98,10 @@ const ProductForm = ({create, typeButton, saveProduct, closeAll}) => {
                 onChange = { e => SetProduct({...product,weight: e.target.value})}
                 placeholder="Weigth"
             />
-        {/* {
-            typeButton ? <MyButton onClick={ createNewProduct }>Add</MyButton> : <MyButton onClick={ saveProduct }>Save</MyButton>
-        } */}
-        <MyButton onClick={ createNewProduct }>Add</MyButton> 
+        {
+            typeButton ? <MyButton onClick={ createNewProduct }>Add</MyButton> : <MyButton onClick={ edit }>Save</MyButton>
+        }
+        {/* <MyButton onClick={ createNewProduct }>Add</MyButton>  */}
         <MyButton onClick={closeModal}>Close</MyButton>
         
             </form>
@@ -114,6 +117,6 @@ ProductForm.propTypes = {
     width: PropTypes.number,
     heigth: PropTypes.number,
     weight:PropTypes.number,
-    comments: PropTypes.array
+    comments: PropTypes.array,
 }
 export default ProductForm;

@@ -11,7 +11,8 @@ import axios from "axios";
     }
     export async function getById(url, id){
         const urlId = `${url}?id=${id}`;
-        const responce = await axios.get(urlId)
+        const responce = await axios.get(urlId);
+
         return responce.data;
 
     }
